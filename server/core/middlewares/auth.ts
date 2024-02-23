@@ -5,27 +5,24 @@ import { getAccessToken } from '@server/lib/auth/oauth-model.js'
 import { RunnerModel } from '@server/models/runner/runner.js'
 import { logger } from '../helpers/logger.js'
 import { handleOAuthAuthenticate } from '../lib/auth/oauth.js'
-// import axios from 'axios'
 
-
-async function authenticate (req: express.Request, res: express.Response, next: express.NextFunction) {
-  console.log('finding token' , req.headers.authorization)
+function authenticate (req: express.Request, res: express.Response, next: express.NextFunction) {
   handleOAuthAuthenticate(req, res)
-  .then((token: any) => {
-    res.locals.oauth = { token }
-    res.locals.authenticated = true
+    .then((token: any) => {
+      res.locals.oauth = { token }
+      res.locals.authenticated = true
 
-    return next()
-  })
-  .catch(err => {
-    logger.info('Cannot authenticate.', { err })
-
-    return res.fail({
-      status: err.status,
-      message: 'Token is invalid',
-      type: err.name
+      return next()
     })
-  })
+    .catch(err => {
+      logger.info('Cannot authenticate.', { err })
+
+      return res.fail({
+        status: err.status,
+        message: 'Token is invalid',
+        type: err.name
+      })
+    })
 }
 
 function authenticateSocket (socket: Socket, next: (err?: any) => void) {

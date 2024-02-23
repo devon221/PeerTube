@@ -18,10 +18,6 @@ import { buildUser, createUserAccountAndChannelAndPlaylist } from '../user.js'
 import { ExternalUser } from './external-auth.js'
 import { TokensCache } from './tokens-cache.js'
 
-//added imports 
-// import axios from 'axios'
-// import { createHash } from 'crypto'
-
 type TokenInfo = {
   accessToken: string
   refreshToken: string
@@ -62,8 +58,6 @@ async function getAccessToken (bearerToken: string) {
 
   return tokenModel
 }
- 
-
 
 function getClient (clientId: string, clientSecret: string) {
   logger.debug('Getting Client (clientId: ' + clientId + ', clientSecret: ' + clientSecret + ').')

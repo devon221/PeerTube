@@ -229,7 +229,7 @@ async function registerUser (req: express.Request, res: express.Response) {
     
     emailVerified: CONFIG.SIGNUP.REQUIRES_EMAIL_VERIFICATION ? false : null
   })
-  console.log( 'userBody:', userToCreate)
+  
   const { user, account, videoChannel } = await createUserAccountAndChannelAndPlaylist({
     userToCreate,
     userDisplayName: body.displayName || undefined,
@@ -244,7 +244,6 @@ async function registerUser (req: express.Request, res: express.Response) {
   }
 
   Notifier.Instance.notifyOnNewDirectRegistration(user)
-
 
   Hooks.runAction('action:api.user.registered', { body, user, account, videoChannel, req, res })
 
