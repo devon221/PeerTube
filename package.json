@@ -9,11 +9,7 @@
     "yarn": ">=1.x"
   },
   "type": "module",
-  "author": {
-    "name": "Chocobozzz",
-    "email": "chocobozzz@framasoft.org",
-    "url": "http://github.com/Chocobozzz"
-  },
+  "author": "Chocobozzz <chocobozzz@framasoft.org> (http://github.com/Chocobozzz)",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Chocobozzz/PeerTube.git"
@@ -261,5 +257,11 @@
         "maxSize": "1mb"
       }
     ]
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/Chocobozzz/PeerTube/issues"
+  },
+  "homepage": "https://github.com/Chocobozzz/PeerTube#readme",
+  "main": "index.js",
+  "license": "ISC"
 }
